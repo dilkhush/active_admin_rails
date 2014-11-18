@@ -4,11 +4,13 @@
   <ul class="nav nav-tabs">
     <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
     <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+    <li><%#= link_to "Logout from Facebook", user_omniauth_authorize_path(:facebook)  %></li>
   </ul>
 <% else %>
   <ul class="nav nav-tabs">
     <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
     <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+    <li><%#= link_to "Sign in with Linkedin",user_omniauth_authorize_path(:linkedin)%></li>
   </ul>
 <% end %>
 </p>

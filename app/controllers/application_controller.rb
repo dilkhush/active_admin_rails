@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
     return nil if user_signed_in? && !current_user.is_admin?
     current_user
   end
+  # helper_method :current_user
+
+  def new_session_path(scope)
+    new_user_session_path
+  end
+  
 end

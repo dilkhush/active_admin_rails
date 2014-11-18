@@ -15,6 +15,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer',  platforms: :ruby
 # for authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-linkedin' 
+gem 'omniauth-twitter' 
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2' 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -27,7 +32,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'activeadmin', github: 'activeadmin'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring',      group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
