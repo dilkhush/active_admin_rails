@@ -9,6 +9,7 @@ ActiveAdmin.register Winery do
     column 'Importer Name'do |winery|
       winery.importer.try(:name)
     end
+    column :wines_count
     column :created_at
     actions
   end
