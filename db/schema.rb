@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118084027) do
+ActiveRecord::Schema.define(version: 20141118113608) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 20141118084027) do
     t.integer  "wineries_count", default: 0
   end
 
+  add_index "importers", ["id"], name: "index_importers_on_id", using: :btree
+  add_index "importers", ["name"], name: "index_importers_on_name", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -81,11 +84,19 @@ ActiveRecord::Schema.define(version: 20141118084027) do
     t.integer  "wines_count", default: 0
   end
 
+  add_index "wineries", ["id"], name: "index_wineries_on_id", using: :btree
+  add_index "wineries", ["importer_id"], name: "index_wineries_on_importer_id", using: :btree
+  add_index "wineries", ["name"], name: "index_wineries_on_name", using: :btree
+
   create_table "wines", force: true do |t|
     t.string   "name",       default: "", null: false
     t.integer  "winery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "wines", ["id"], name: "index_wines_on_id", using: :btree
+  add_index "wines", ["name"], name: "index_wines_on_name", using: :btree
+  add_index "wines", ["winery_id"], name: "index_wines_on_winery_id", using: :btree
 
 end
