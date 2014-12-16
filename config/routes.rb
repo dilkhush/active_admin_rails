@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { registrations: 'registrations',:omniauth_callbacks => "users/omniauth_callbacks" }
   
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/failure', to: redirect('/')
+  # get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  
   get 'home/index'
   root to: 'home#index'
   
